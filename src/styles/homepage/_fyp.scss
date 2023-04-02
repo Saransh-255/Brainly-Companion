@@ -1,0 +1,59 @@
+//button
+.fyp{
+  transition-duration: 350ms;
+  background: rgb(78,69,69);
+  background: linear-gradient(135deg, rgba(78,69,69,1) 0%, rgba(0,0,0,0.7861519607843137) 100%);
+}
+.fyp-feed{
+  display:none;
+}
+.for-you{
+  //remove feed
+  > .sg-animation-fade-in-fast{
+    display: none!important;
+  }
+  //new gradient on button
+  .fyp{
+    background: rgb(119,95,212)!important;
+    background: linear-gradient(135deg, rgba(119,95,212,1) 0%, rgba(215,0,129,0.7861519607843137) 100%)!important;
+  }
+  .fyp-feed{
+    display:flex!important;
+    flex-direction: column;
+    padding: 0px 8px;
+    gap: 8px;
+    .fyp-feed-item{
+      border: 2px solid #ebf2f7;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap:1.5rem;
+      >.sg-flex{
+        width:100%;
+        justify-content: space-between;
+      }
+      .info{ 
+        align-items:flex-end;
+        .user{
+          height:max-content;
+          > a, > div{
+            display:flex;
+            align-items:center;
+          }
+        }
+      }
+      .headrow{
+        display:flex;
+        align-items:flex-start;
+        .report-pts{
+          display:flex;
+          align-items:center;
+        }
+      }
+      .fyp-content{
+        height:3rem;
+        overflow:hidden;
+      }
+    }
+  }
+}

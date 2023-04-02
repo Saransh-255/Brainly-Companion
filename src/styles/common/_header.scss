@@ -1,0 +1,8 @@
+:root{
+  --header: #bdc7fb;
+}
+
+[class ^= 'Header-module'], div[class ^= 'brn-header-placeholder'], .brn-footer, #html .mint .mint-header, #moderate-functions-panel .covering-text, footer[data-testid = 'footer_layout'],.brn-header-placeholder, #footer{
+    background-color: var(--header)!important;
+    border-bottom-color: var(--header)!important;
+  }

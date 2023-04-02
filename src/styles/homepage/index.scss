@@ -1,0 +1,14 @@
+@use "../common/header";
+@use "./feedItem";
+@use "../common/modals/report";
+@use "./fyp";
+@use "../common/basic";
+@use "../common/gameBox";
+@use "../common/modals/preview";
+
+.modticket, a.newansbut, .rep-button, .preview-button{
+  display: none!important;
+}
+.sg-button--disabled{
+  pointer-events: none!important;
+}

@@ -1,0 +1,14 @@
+.loading-ext{
+  position: fixed;
+  background: black;
+  z-index:999;
+  // left: 50%;
+  // transform: translateX(-50%);
+  left: 2rem;
+  gap: 12px;
+  bottom: 2rem;
+  padding: 4px 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+}

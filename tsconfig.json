@@ -1,0 +1,27 @@
+{
+  "include": ["./src"],
+  "exclude": ["node_modules/", "dist/"],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "baseUrl": "./src",
+    "module": "CommonJS",
+    "target": "ESNext",
+    "outDir": "./build",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "lib": ["ES5", "ES6", "DOM", "ESNext"],
+    "paths": {
+      "@lib/*": ["lib/*"],
+      "@api/*": ["lib/api/*"],
+      "@brainly": ["lib/api/brainly/index.ts"],
+      "@typings/*": ["typings/*"],
+      "@reactComponents": ["components/react/index.ts"],
+      "@components": ["components/elements/index.ts"],
+      "@utils/*": ["utils/*"],
+      "@modals/*": ["modals/*"],
+      "@config/*": ["config/*"],
+      "@styles/*": ["styles/*"],
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.progress .sg-box{
+  display:flex;
+  flex-direction:column;
+  .dataItem{
+    background: black;
+    padding: 8px 12px;
+    border-radius: 10px;
+    min-width: 150px;
+    gap: 2rem;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  &.answer-rate{
+    height:100%;
+    background: rgb(203,13,165);
+    background: linear-gradient(167deg, rgba(203,13,165,0.7917542016806722) 0%, rgba(12,11,252,0.6685049019607843) 100%);
+    >div{
+      height:100%;
+    }
+  }
+}

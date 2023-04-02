@@ -1,0 +1,8 @@
+@use "../common/header";
+@use "./desmos";
+@use "./answerBox";
+@use "../common/gameBox";
+
+.js-dialog{
+  z-index: 998!important;
+}

@@ -1,0 +1,20 @@
+@use "./app";
+
+#modal.report{
+  z-index: 999;
+  .reportRadiogrp{
+    .sg-flex{
+      .sg-select, .sg-textarea{
+        display: none;
+      }
+      &.select{
+        .sg-select, .sg-textarea{
+          display: inline-block;
+        }
+      }
+      .reportData{
+        margin-top: 8px;
+      }
+    }
+  }
+}

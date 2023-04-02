@@ -1,0 +1,16 @@
+#modal{
+  position:fixed;
+  z-index:999;
+  .closeModal{
+    background:transparent!important;
+  }
+  #calculator{
+    height:90vh;
+    border:none;
+    border-radius: 5px;
+
+    #dcg-header-container{
+      display:none!important;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.tooltip{
+  position: relative;
+  &:hover:before {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: -40px;
+    left: 0;
+    padding: 4px 12px;
+    background: black;
+    color: white;
+    font-weight: 600;
+    border-radius: 7px;
+    font-family: "ProximaNova","Helvetica","Arial",sans-serif;
+
+    white-space: nowrap;
+  }
+}

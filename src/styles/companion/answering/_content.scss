@@ -1,0 +1,47 @@
+.content{
+  flex:1;
+  padding:14px;
+  gap: 14px;
+  height:100vh;
+  width:100%;
+
+  .f1{
+    flex:1;
+  }
+  .chart{
+    height:100%;
+    width:max-content;
+    position:relative;
+    flex-direction:column;
+    align-items:center;
+    gap:0.25rem;
+    > canvas{
+      height:150px!important;
+      width:150px!important;
+    }
+    > .sg-text{
+      padding: 2px 12px;
+      font-weight: 600;
+      background: black;
+      border-radius: 10px;
+      color: white;
+    }
+  }
+  >.sg-flex, >.sg-flex>.sg-flex{
+    gap: 14px;
+  }
+  .toprow{
+    max-height:235px;
+  }
+  .bottomrow{
+    overflow:auto;
+    .sg-box{
+      overflow:auto;
+    }
+  }
+  .ansGraph{
+    height: 100%;
+    width: 100%;
+    padding: 12px;
+  }
+}

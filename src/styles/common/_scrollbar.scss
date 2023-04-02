@@ -1,0 +1,18 @@
+
+
+.scroll-container{
+  overflow: auto!important;
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+  &::-webkit-scrollbar-track {
+    background: white; 
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #e1eaf1; 
+    border-radius:5px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #e1eaf1; 
+  }
+}
