@@ -1,5 +1,6 @@
 import createModal from "@lib/createModal";
 import { Button, Flex, Headline } from "brainly-style-guide";
+import { useEffect } from "react";
 
 import { ColorPicker, useColor } from "react-color-palette";
 import applyColor from "views/theme";
@@ -13,6 +14,10 @@ export default function PickColor() {
 
 function ColorModal() {
   const [color, setColor] = useColor("hex", localStorage.getItem("comp-header"));
+
+  useEffect(() => {
+    applyColor(color.hex);
+  }, [color]);
 
   return (
     <Flex

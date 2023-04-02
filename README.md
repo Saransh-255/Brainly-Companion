@@ -57,7 +57,7 @@ Why keep bookmarks when you have them integrated right where you need them
 Not a lot of philosophy behind this one, just looks cool.
 
 ### Custom Themes
-<img src="https://gyazo.com/397e2eb791551f6f75121f0edb8e27cc.png" height=300/>
+<img src="https://gyazo.com/8e0add741cee7ed08d6e2ec6cf1ac0d1.png" height=300/>
 
 ### Answer Input Box Features
 
