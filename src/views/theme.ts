@@ -3,7 +3,7 @@ const saved = localStorage.getItem("comp-header");
 if (!saved) localStorage.setItem("comp-header", "#bdc7fb");
 applyColor(saved);
 
-window.addEventListener("storage", (e) => {
+window.addEventListener("storage", () => {
   applyColor(localStorage.getItem("comp-header"));
 });
 

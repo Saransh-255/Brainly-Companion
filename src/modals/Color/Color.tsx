@@ -5,16 +5,24 @@ import { useEffect } from "react";
 import { ColorPicker, useColor } from "react-color-palette";
 import applyColor from "views/theme";
 
+const savedColor = localStorage.getItem("comp-header");
+
 export default function PickColor() {
   createModal({
     element: <ColorModal />,
-    className: "color-modal"
+    className: "color-modal",
+    closeFn() {
+      toggleHead();
+      applyColor(savedColor);
+    },
   });
 }
 
 function ColorModal() {
-  const [color, setColor] = useColor("hex", localStorage.getItem("comp-header"));
-
+  const [color, setColor] = useColor("hex", savedColor);
+  useEffect(() => {
+    toggleHead();
+  }, []);
   useEffect(() => {
     applyColor(color.hex);
   }, [color]);
@@ -54,10 +62,15 @@ function ColorModal() {
           localStorage.setItem("comp-header", color.hex);
           applyColor(color.hex);
           document.querySelector("#modal").remove();
+          toggleHead();
         }}
       >
         Apply
       </Button>
     </Flex>
   );
+}
+
+function toggleHead() {
+  document.querySelector(".brn-header-container").classList.toggle("viewing");
 }

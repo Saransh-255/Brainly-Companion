@@ -4,7 +4,7 @@ import renderJSX from "./renderJSX";
 export default function createModal(
   data:
     {
-      element: React.ReactNode,
+      element: JSX.Element,
       className: string,
       minWidth?: string,
       maxWidth?: string,

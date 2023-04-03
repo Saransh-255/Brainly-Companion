@@ -1,15 +1,16 @@
 {
-  "name": "TH-Companion",
-  "description": "tools for brainly.",
+  "name": "Brainly Companion",
+  "description": "A set of tools to make it easier to help others.",
   "manifest_version": 3,
-  "version":"5.13",
+  "version":"1.0",
   "host_permissions": [
     "*://brainly.com/*"
   ],
   "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "32": "icons/32.png",
+    "128": "icons/128.png"
   },
   "content_scripts": [
     {
@@ -22,10 +23,10 @@
       "js": ["js/homepage.js"],
       "css": ["css/homepage/index.css"],
       "exclude_globs": [
-        "https://brainly.com/question/*", 
-        "https://brainly.com/app/profile/*", 
-        "https://brainly.com/profile/*",
-        "https://brainly.com/users/*"
+        "https://brainly.*/app/profile/*", 
+        "https://brainly.*/question/*", 
+        "https://brainly.*/profile/*",
+        "https://brainly.*/users/*"
       ],
       "run_at": "document_start"
     },

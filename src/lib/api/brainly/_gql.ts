@@ -1,9 +1,11 @@
 export default new class GQL {
-  private graphURL = `https://brainly.com/graphql/us`;
+  private graphURL: string;
   private tokenLong: string;
 
   constructor() {
     this.SetAuthToken();
+
+    this.graphURL = `https://${window.location.href.replace("https://", "").split("/")[0]}/graphql/us`;
   }
   private SetAuthToken() {
     let cookie = document.cookie.split("; ").find(cookie => /\[Token\]\[Long\]/i.test(cookie));

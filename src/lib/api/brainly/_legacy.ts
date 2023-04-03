@@ -10,7 +10,7 @@ import type {
 } from "@typings/brainly";
 
 export default new class BrainlyAPI {
-  private legacyURL = `https://brainly.com/api/28`;
+  private legacyURL:string;
   private tokenLong: string;
   private MODEL_ID = {
     "task" : 1,
@@ -20,6 +20,8 @@ export default new class BrainlyAPI {
 
   constructor() {
     this.SetAuthToken();
+
+    this.legacyURL = `https://${window .location.href.replace("https://", "").split("/")[0]}/api/28`;
   }
   private SetAuthToken() {
     let cookie = document.cookie.split("; ").find(cookie => /\[Token\]\[Long\]/i.test(cookie));
@@ -45,7 +47,7 @@ export default new class BrainlyAPI {
     return await this.Legacy("GET", `api_tasks/main_view/${id}`);
   }
   async ReportReasons(id: number, type: "task" | "response" | "comment"):Promise<ReportData> {
-    return await fetch("https://brainly.com/api/28/moderation_new/get_abuse_reasons", {
+    return await fetch(`${this.legacyURL}/moderation_new/get_abuse_reasons`, {
       method: "POST",
       body: JSON.stringify({
         model_id: id,
@@ -54,18 +56,18 @@ export default new class BrainlyAPI {
     }).then(data => data.json()).then(data => data);
   }
   async ReferenceData():Promise<ReferenceData> {
-    return await fetch("https://brainly.com/api/28/api_config/desktop_view")
+    return await fetch(this.legacyURL + "/api_config/desktop_view")
       .then(data => data.json());
   }
   async PreviewData(id:string | number):Promise<PreviewData> {
-    return await fetch(`https://brainly.com/api/28/api_tasks/main_view/${id}`)
+    return await fetch(`${this.legacyURL}/api_tasks/main_view/${id}`)
       .then(data => data.json());
   }
   async MyData():Promise<UserInfo> {
-    return await fetch(`https://brainly.com/api/28/api_users/me`).then(data => data.json());
+    return await fetch(`${this.legacyURL}/api/28/api_users/me`).then(data => data.json());
   }
   async GetContent(type: "tasks" | "responses"):Promise<ContentList> {
-    return await fetch(`https://brainly.com/api/28/api_${type}/view_list`, 
+    return await fetch(`${this.legacyURL}/api_${type}/view_list`, 
       {
         method: "POST", 
         body: JSON.stringify({ 
@@ -74,7 +76,7 @@ export default new class BrainlyAPI {
       }).then(data => data.json());
   }
   async GetNotifications():Promise<Notifications> {
-    return await fetch("https://brainly.com/api/28/api_notifications/view", 
+    return await fetch(`${this.legacyURL}/api_notifications/view`, 
       {
         method: "POST", 
         body: JSON.stringify({
@@ -91,7 +93,7 @@ export default new class BrainlyAPI {
     data?: string
   }) {
 
-    let res = await fetch("https://brainly.com/api/28/api_moderation/abuse_report", {
+    let res = await fetch(`${this.legacyURL}/api_moderation/abuse_report`, {
       method: "POST",
       body: JSON.stringify({
         abuse: {
