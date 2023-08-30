@@ -1,7 +1,4 @@
-@use "../common/header";
-@use "./feedItem";
 @use "../common/modals/report";
-@use "./fyp";
 @use "../common/basic";
 @use "../common/gameBox";
 @use "../common/modals/preview";
@@ -9,6 +6,20 @@
 .modticket, a.newansbut, .rep-button, .preview-button{
   display: none!important;
 }
+body > div.js-page-wrapper > div > div.js-react-feed-logged-in > div.sg-layout.sg-layout--wide.sg-layout--three-columns > div > div.sg-layout__content > div.sg-flex.sg-flex--margin-bottom-m > div{
+  > div.sg-flex.sg-flex--margin-top-m.sg-flex--margin-right-m.sg-flex--margin-bottom-l.sg-flex--margin-left-m, > div[role="separator"]{
+    display: none!important;
+  }
+}
 .sg-button--disabled{
   pointer-events: none!important;
+}
+
+.brn-feed-item__footer {
+  > div{
+    display:flex;
+    > .action-menu{
+      display:flex;
+    }
+  }
 }

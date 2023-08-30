@@ -5,11 +5,12 @@ import { useEffect } from "react";
 import { ColorPicker, useColor } from "react-color-palette";
 import applyColor from "views/theme";
 
-const savedColor = localStorage.getItem("comp-header");
+import locals from "@config/localization";
 
 export default function PickColor() {
+  const savedColor = localStorage.getItem("comp-header");
   createModal({
-    element: <ColorModal />,
+    element: <ColorModal savedColor={savedColor} />,
     className: "color-modal",
     closeFn() {
       toggleHead();
@@ -18,7 +19,7 @@ export default function PickColor() {
   });
 }
 
-function ColorModal() {
+function ColorModal({ savedColor }) {
   const [color, setColor] = useColor("hex", savedColor);
   useEffect(() => {
     toggleHead();
@@ -40,7 +41,7 @@ function ColorModal() {
         extraBold
         size="large"
       >
-        Change Theme
+        {locals.modals.theme.title}
       </Headline>
       <ColorPicker 
         width={300}
@@ -61,11 +62,12 @@ function ColorModal() {
         onClick={() => {
           localStorage.setItem("comp-header", color.hex);
           applyColor(color.hex);
+          setColor(color);
           document.querySelector("#modal").remove();
           toggleHead();
         }}
       >
-        Apply
+        {locals.modals.theme.commit}
       </Button>
     </Flex>
   );

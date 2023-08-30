@@ -3,6 +3,7 @@ import { RadioGroup, Button, Flex, Radio, Textarea } from "brainly-style-guide";
 import { useState } from "react";
 import { ReportData } from "@typings/brainly";
 import Subcategories from "./Subcategory";
+import locals from "@config/localization";
 
 export default function ReportReasons(
   { reasons, id, type, target, success } : 
@@ -96,7 +97,7 @@ export default function ReportReasons(
           }
         }
       >
-        report
+        {locals.modals.report.commit}
       </Button>
     </RadioGroup>
   );

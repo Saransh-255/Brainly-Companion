@@ -46,6 +46,8 @@ const links = [
 ];
 
 export default function Content() {
+  const refresh = useState(false);
+
   //const [user, setUser] = React.useState<UserInfo>();
   const [answers, setAnswers] = useState<ContentList>();
   const [notifications, setNotif] = useState<Notifications>();
@@ -56,7 +58,7 @@ export default function Content() {
       await Legacy.GetContent("responses").then(ans => setAnswers(ans));
     };
     getData();
-  }, []);
+  }, [refresh]);
 
   if (notifications && answers) {
     return (

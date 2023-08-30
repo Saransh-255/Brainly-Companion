@@ -1,10 +1,15 @@
 {
   "name": "Brainly Companion",
-  "description": "A set of tools to make it easier to help others.",
+  "description": "Additional Features to Improve Your Brainly Experience. Compatible with: (in, fr, us, ro, ru)",
   "manifest_version": 3,
-  "version":"1.0",
+  "version": "1.16",
   "host_permissions": [
-    "*://brainly.com/*"
+    "*://brainly.com/*",
+    "*://brainly.ro/*",
+    "*://znanija.com/*",
+    "*://nosdevoirs.fr/*",
+    "*://brainly.in/*",
+    "*://brainly.co.id/*"
   ],
   "icons": {
     "16": "icons/16.png",
@@ -14,39 +19,133 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://brainly.com/*", "*://brainly.com/"],
-      "js": ["js/theme.js"],
-      "run_at": "document_start"
-    },
-    {
-      "matches": ["*://brainly.com/*"],
-      "js": ["js/homepage.js"],
-      "css": ["css/homepage/index.css"],
-      "exclude_globs": [
-        "https://brainly.*/app/profile/*", 
-        "https://brainly.*/question/*", 
-        "https://brainly.*/profile/*",
-        "https://brainly.*/users/*"
+      "matches": [
+        "*://brainly.com/*",
+        "*://brainly.com/",
+        "*://brainly.ro/*",
+        "*://brainly.ro/",
+
+        "*://znanija.com/*",
+        "*://znanija.com/",
+
+        "*://nosdevoirs.fr/*",
+        "*://nosdevoirs.fr/",
+
+        "*://brainly.in/*",
+        "*://brainly.in/",
+
+        "*://brainly.co.id/*",
+        "*://brainly.co.id/"
+      ],
+      "js": [
+        "js/theme.js"
+      ],
+      "css": [
+        "css/theme/index.css"
       ],
       "run_at": "document_start"
     },
     {
-      "matches": ["*://brainly.com/app/ask*"],
-      "js": ["js/search.js"],
+      "matches": [
+        "*://brainly.com/*",
+        "*://brainly.ro/*",
+        "*://znanija.com/*",
+        "*://nosdevoirs.fr/*",
+        "*://brainly.in/*",
+        "*://brainly.co.id/*"
+      ],
+      "js": [
+        "js/homepage.js"
+      ],
+      "css": [
+        "css/homepage/index.css"
+      ],
+      "exclude_globs": [
+        "https://brainly.*/app/profile/*",
+        "https://brainly.*/question/*",
+        "https://brainly.*/profile/*",
+        "https://brainly.*/users/*",
+
+        "https://brainly.*.*/app/profile/*",
+        "https://brainly.*.*/tugas/*",
+        "https://brainly.*.*/profile/*",
+        "https://brainly.*.*/users/*",
+
+        "https://znanija.*/app/profile/*",
+        "https://znanija.*/task/*",
+        "https://znanija.*/profile/*",
+        "https://znanija.*/users/*",
+
+        "https://nosdevoirs.*/app/profile/*",
+        "https://nosdevoirs.*/devoir/*",
+        "https://nosdevoirs.*/profile/*",
+        "https://nosdevoirs.*/users/*"
+      ],
       "run_at": "document_start"
     },
     {
-      "matches": ["*://brainly.com/question/*"],
-      "js": ["js/question.js"],
-      "css": ["css/question/index.css"],
+      "matches": [
+        "*://brainly.com/app/ask*",
+        "*://brainly.ro/app/ask*",
+        "*://brainly.co.id/app/ask*",
+        "*://brainly.in/app/ask*",
+        "*://znanija.com/app/ask*",
+        "*://nosdevoirs.fr/app/ask*"
+      ],
+      "js": [
+        "js/search.js"
+      ],
       "run_at": "document_start"
     },
-
-
     {
-      "matches": ["*://brainly.com/companion/answering"],
-      "js": ["js/answerDash.js"],
-      "css": ["css/companion/answering/index.css"],
+      "matches": [
+        "*://brainly.com/question/*",
+        "*://brainly.in/question/*",
+        "*://brainly.co.id/tugas/*",
+        "*://brainly.ro/tema/*",
+        "*://znanija.com/task/*",
+        "*://nosdevoirs.fr/devoir/*"
+      ],
+      "js": [
+        "js/question.js"
+      ],
+      "css": [
+        "css/question/index.css"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "*://brainly.com/app/profile/*",
+        "*://brainly.in/app/profile/*",
+        "*://brainly.co.id/app/profile/*",
+        "*://brainly.ro/app/profile/*",
+        "*://znanija.com/app/profile/*",
+        "*://nosdevoirs.fr/app/profile/*"
+      ],
+      "js": [
+        "js/profile.js"
+      ],
+      "css": [
+        "css/profile/index.css"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "*://brainly.com/companion/answering",
+        "*://brainly.in/companion/answering",
+        "*://brainly.co.id/companion/answering",
+        "*://brainly.ro/companion/answering",
+        "*://znanija.com/companion/answering",
+        "*://nosdevoirs.fr/companion/answering"
+      ],
+      "js": [
+        "js/answerDash.js"
+      ],
+      "css": [
+        "css/companion/answering/index.css"
+      ],
       "run_at": "document_start"
     }
   ]

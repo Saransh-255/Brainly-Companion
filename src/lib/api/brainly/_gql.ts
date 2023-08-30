@@ -5,7 +5,7 @@ export default new class GQL {
   constructor() {
     this.SetAuthToken();
 
-    this.graphURL = `https://${window.location.href.replace("https://", "").split("/")[0]}/graphql/us`;
+    this.graphURL = `https://brainly.com/graphql/us`;
   }
   private SetAuthToken() {
     let cookie = document.cookie.split("; ").find(cookie => /\[Token\]\[Long\]/i.test(cookie));

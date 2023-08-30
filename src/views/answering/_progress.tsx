@@ -17,6 +17,7 @@ import {
   Tooltip
 } from "chart.js";
 import { formatInTimeZone } from "date-fns-tz";
+import locals from "@config/localization";
 
 ChartJS.register(
   ArcElement,
@@ -47,7 +48,7 @@ export default function Progress({ allAnswers }) {
             <Doughnut data={{
               labels: ["", ""],
               datasets: [{
-                label: "Quota",
+                label: locals.dashboard.quota,
                 data: [qProgress, qProgress < 100 ? (100 - qProgress) : 0],
                 backgroundColor: [
                   qProgress >= 100 ? "#fbbe2e" : "#014a82",
@@ -62,7 +63,7 @@ export default function Progress({ allAnswers }) {
             }} 
             id="quota"
             />
-            <Text sizes = "m" style={{ width:"max-content" }}>Quota ({qProgress / 10} / 10)</Text>
+            <Text sizes = "m" style={{ width:"max-content" }}>{locals.dashboard.quota} ({qProgress / 10} / 10)</Text>
           </Flex>
 
           <SeparatorVertical size="full" />
@@ -70,7 +71,7 @@ export default function Progress({ allAnswers }) {
           <Flex style = {{ gap: "1rem", height:"100%" }}>
             <StatItem 
               head = {filterByTime(allAnswers, startOfMonth(today), today).length}
-              text={"Month"}
+              text={locals.dashboard.month}
               before = {
                 filterByTime(
                   allAnswers, 
@@ -82,7 +83,7 @@ export default function Progress({ allAnswers }) {
 
             <StatItem 
               head = {filterByTime(allAnswers, startOfQuarter(today), today).length}
-              text={"Quarter"}
+              text={locals.dashboard.quarter}
               before = {
                 filterByTime(
                   allAnswers, 
@@ -122,7 +123,7 @@ export default function Progress({ allAnswers }) {
                   }
                 </Headline>
                 <Text color="text-white" >
-                  answers/day
+                  {locals.dashboard.rate}
                 </Text>
               </Flex>
             </Flex>

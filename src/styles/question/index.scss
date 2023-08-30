@@ -1,7 +1,7 @@
-@use "../common/header";
 @use "./desmos";
 @use "./answerBox";
 @use "../common/gameBox";
+@use "../common/basic";
 
 .js-dialog{
   z-index: 998!important;

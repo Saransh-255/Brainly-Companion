@@ -1,4 +1,4 @@
-.tooltip{
+@mixin tooltip{
   position: relative;
   &:hover:before {
     content: attr(data-tooltip);
@@ -14,4 +14,7 @@
 
     white-space: nowrap;
   }
+}
+.tooltip{
+  @include tooltip;
 }

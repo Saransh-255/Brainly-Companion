@@ -1,7 +1,9 @@
+import local from "@config/localization";
 import { Headline, Breadcrumb, Flex, Link } from "brainly-style-guide";
 
 export default function Head({ subject, grade, id, data }) {
   let link = `https://brainly.com/question/${id}`; 
+  
   return (
     <Flex 
       direction="column"
@@ -14,7 +16,9 @@ export default function Head({ subject, grade, id, data }) {
         extraBold
         size="large"
       >
-        Question Preview 
+        {
+          local.modals.preview.title
+        }
         <Link
           as="a"
           hideNewTabIndicator
@@ -31,7 +35,7 @@ export default function Head({ subject, grade, id, data }) {
         elements = {[
           `${subject}`,
           `${grade}`,
-          `${data.points.ptsForTask + " pts"}`
+          `${data.points.ptsForTask + " " + local.points}`
         ]}
       />
     </Flex>

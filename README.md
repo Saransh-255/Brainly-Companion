@@ -2,7 +2,6 @@ Tools to supercharge your Brainly experience.
 
 ---
 - [Installation Guide](https://github.com/Saransh-255/Brainly-Companion#installation-guide)
-- [Getting Started](https://github.com/Saransh-255/Brainly-Companion#getting-started)
 -  [Features](https://github.com/Saransh-255/Brainly-Companion#features)
 	-  ["For You" Feed](https://github.com/Saransh-255/Brainly-Companion#for-you-feed)
 	- [Question Preview](https://github.com/Saransh-255/Brainly-Companion#question-preview)

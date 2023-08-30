@@ -22,9 +22,9 @@ observeMutation({
     let answerBox = document.querySelector(".brn-answer-editor-layer") as HTMLElement;
     if (!answerBox || answerBox.dataset.modified) return;
     answerBox.dataset.modified = "true";
-    
+
     answerBox.querySelector("div[data-testid = 'rich_text_editor_toolbar']")
-      .insertAdjacentElement("beforeend", buttonElem({
+      .appendChild(buttonElem({
         icon: {
           type: "draw",
           size: 24,
@@ -55,7 +55,6 @@ observeMutation({
         <div class = "sg-text remaining-count"></div>
       </div>
       `);
-
     let numChart = new Chart("acount", {
       type: "doughnut",
       data: {
@@ -83,7 +82,6 @@ observeMutation({
         cutout: "70%"
       }
     });
-
     observeMutation({
       target: "#slate-editable",
       hookInterval: 0,
@@ -104,7 +102,7 @@ observeMutation({
           let texSelector = "img[data-testid='tex_image']";
           let text = "span[data-slate-string = 'true']";
 
-          if (line.querySelector(text)) aStr += line.querySelector(text).innerHTML;
+          if (line.querySelector(text)) aStr += (line.querySelector(text) as HTMLElement).innerText;
 
           if (line.querySelector(texSelector)) {
             Array.from(line.querySelectorAll(texSelector)).forEach(tex => {
@@ -115,6 +113,7 @@ observeMutation({
           if (Profanity.test(line.innerHTML)) {
             return line.querySelector("span[data-slate-node = 'text']").classList.add("highlight");
           }
+          //aStr += "<p></p>";
         });
 
         let count = document.querySelector(".remaining-count") as HTMLElement;

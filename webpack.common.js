@@ -9,6 +9,7 @@ module.exports = {
     homepage: path.join(__dirname, "src/views/homepage/index.ts"),
     question: path.join(__dirname, "src/views/question/index.tsx"),
     search: path.join(__dirname, "src/views/search/index.ts"),
+    profile: path.join(__dirname, "src/views/profile/index.ts"),
 
     answerDash: ["core-js", path.join(__dirname, "src/views/answering/index.tsx")],
 
@@ -35,7 +36,7 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
     plugins: [
-      new TsconfigPathsPlugin(),
+      new TsconfigPathsPlugin()
     ],
     modules: ["node_modules"],
     fallback: {

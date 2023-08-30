@@ -3,6 +3,7 @@ import { Headline } from "brainly-style-guide";
 import { Legacy } from "@brainly";
 import ReportReasons from "./Components/ReasonList";
 import showLoading from "@lib/showLoading";
+import locals from "@config/localization";
 
 export default async function reportMenu(
   id:number,
@@ -22,7 +23,7 @@ export default async function reportMenu(
         size="medium"
         extraBold
       >
-      Report Content
+        {locals.modals.report.title}
       </Headline>
 
       <ReportReasons success={successFn} target={target} reasons={reasons} id={id} type={type} key={id}/>

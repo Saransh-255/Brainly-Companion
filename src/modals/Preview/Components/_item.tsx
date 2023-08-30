@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Avatar, Text, Media, Button, Icon, Box, Flex } from "brainly-style-guide";
 import Attachments from "./_attachments";
 import reportMenu from "@modals/Report/report";
+import local from "@config/localization";
+import site from "@lib/market";
 
 export default function Item({ id, data, users, type }) {
   const [commentVis, setVis] = useState(false);
@@ -99,9 +101,9 @@ export default function Item({ id, data, users, type }) {
               }}
               type={"button"}
               variant="outline"
-              href = {`https://brainly.com/question/${id}?answering=true`}
+              href = {`${site.url}/${site.locals.question}/${id}?answering=true`}
             >
-          Answer
+              {local.modals.preview.answer}
             </Button>
           ) : ""
         }

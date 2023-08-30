@@ -11,7 +11,6 @@ import type {
 
 export default new class BrainlyAPI {
   private legacyURL:string;
-  private tokenLong: string;
   private MODEL_ID = {
     "task" : 1,
     "response" : 2,
@@ -19,13 +18,7 @@ export default new class BrainlyAPI {
   };
 
   constructor() {
-    this.SetAuthToken();
-
-    this.legacyURL = `https://${window .location.href.replace("https://", "").split("/")[0]}/api/28`;
-  }
-  private SetAuthToken() {
-    let cookie = document.cookie.split("; ").find(cookie => /\[Token\]\[Long\]/i.test(cookie));
-    this.tokenLong = cookie?.split("=")?.pop();
+    this.legacyURL = `https://${window.location.href.replace("https://", "").split("/")[0]}/api/28`;
   }
 
   private async Legacy<T>(
