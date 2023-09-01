@@ -3,6 +3,7 @@ import site from "@lib/market";
 const langs = {
   en: {
     points: "pts",
+    answering: "Answering Dashboard",
     modals: {
       preview: {
         title: "Preview Content",
@@ -26,6 +27,7 @@ const langs = {
   },
   ru: {
     points: "б",
+    answering: "Панель ответов",
     modals: {
       preview: {
         title: "Предварительный просмотр вопроса",
@@ -49,6 +51,7 @@ const langs = {
   },
   fr: {
     points: "pts",
+    answering: "Tableau de bord de réponse",
     modals: {
       preview: {
         title: "Aperçu du contenu",
@@ -72,6 +75,7 @@ const langs = {
   },
   ro: {
     points: "pcte",
+    answering: "Tabloul de bord cu răspunsuri",
     modals: {
       preview: {
         title: "Previzualizare conținut",

@@ -9,7 +9,7 @@ export default function Item({ id, data, users, type }) {
   const [commentVis, setVis] = useState(false);
   const [iconStr, setStr] = useState("comment_outlined");
   let user = userById(users, data.user_id);
-  let userId = `https://brainly.com/profile/${user.nick}-${user.id}`;
+  let userId = `${site.url}/app/profile/${user.id}`;
   let content = data.content;
   let reported = data.settings.is_marked_abuse;
 

@@ -1,10 +1,12 @@
 import { box, icon } from "@components";
-import locals from "@lib/market";
 import observeMutation from "@lib/observeMutation";
 import runForElem from "@lib/runForElem";
 import PickColor from "@modals/Color/Color";
+import site from "@lib/market";
+import locals from "@config/localization";
 
 export default function gameBox() {
+  console.log(site);
 
   function addGbButs(elem: HTMLElement) {
     if (document.querySelector(".comp-gb")) return;
@@ -13,10 +15,10 @@ export default function gameBox() {
     const gbox = document.querySelector(".comp-gb");
 
     gbox.appendChild(
-      gBoxElem("Answering Dashboard", "#133191", "star", `${locals.url}/companion/answering`)
+      gBoxElem(locals.answering, "#133191", "star", `${site.url}/companion/answering`)
     );
     gbox.appendChild(
-      gBoxElem("Change Theme", "#000000", "globe", "", () => {
+      gBoxElem(locals.modals.theme.title, "#000000", "globe", "", () => {
         PickColor();
       })
     );
