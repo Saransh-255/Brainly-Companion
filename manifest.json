@@ -1,15 +1,16 @@
 {
   "name": "Brainly Companion",
-  "description": "Additional Features to Improve Your Brainly Experience. Compatible with: (in, fr, us, ro, ru)",
+  "description": "Additional Features to Improve Your Brainly Experience. Compatible with: (in, fr, us, ro, ru, id, pl)",
   "manifest_version": 3,
-  "version": "1.17",
+  "version": "1.22",
   "host_permissions": [
     "*://brainly.com/*",
     "*://brainly.ro/*",
     "*://znanija.com/*",
     "*://nosdevoirs.fr/*",
     "*://brainly.in/*",
-    "*://brainly.co.id/*"
+    "*://brainly.co.id/*",
+    "*://brainly.pl/*"
   ],
   "icons": {
     "16": "icons/16.png",
@@ -35,7 +36,10 @@
         "*://brainly.in/",
 
         "*://brainly.co.id/*",
-        "*://brainly.co.id/"
+        "*://brainly.co.id/",
+
+        "*://brainly.pl/*",
+        "*://brainly.pl/"
       ],
       "js": [
         "js/theme.js"
@@ -52,7 +56,8 @@
         "*://znanija.com/*",
         "*://nosdevoirs.fr/*",
         "*://brainly.in/*",
-        "*://brainly.co.id/*"
+        "*://brainly.co.id/*",
+        "*://brainly.pl/*"
       ],
       "js": [
         "js/homepage.js"
@@ -63,6 +68,7 @@
       "exclude_globs": [
         "https://brainly.*/app/profile/*",
         "https://brainly.*/question/*",
+        "https://brainly.*/zadanie/*",
         "https://brainly.*/profile/*",
         "https://brainly.*/users/*",
 
@@ -87,6 +93,7 @@
       "matches": [
         "*://brainly.com/app/ask*",
         "*://brainly.ro/app/ask*",
+        "*://brainly.pl/app/ask*",
         "*://brainly.co.id/app/ask*",
         "*://brainly.in/app/ask*",
         "*://znanija.com/app/ask*",
@@ -101,6 +108,7 @@
       "matches": [
         "*://brainly.com/question/*",
         "*://brainly.in/question/*",
+        "*://brainly.pl/zadanie/*",
         "*://brainly.co.id/tugas/*",
         "*://brainly.ro/tema/*",
         "*://znanija.com/task/*",
@@ -118,6 +126,7 @@
       "matches": [
         "*://brainly.com/app/profile/*",
         "*://brainly.in/app/profile/*",
+        "*://brainly.pl/app/profile/*",
         "*://brainly.co.id/app/profile/*",
         "*://brainly.ro/app/profile/*",
         "*://znanija.com/app/profile/*",
@@ -135,6 +144,7 @@
       "matches": [
         "*://brainly.com/companion/answering",
         "*://brainly.in/companion/answering",
+        "*://brainly.pl/companion/answering",
         "*://brainly.co.id/companion/answering",
         "*://brainly.ro/companion/answering",
         "*://znanija.com/companion/answering",

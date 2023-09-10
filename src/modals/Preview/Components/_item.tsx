@@ -1,27 +1,39 @@
 import { useState } from "react";
 import { Avatar, Text, Media, Button, Icon, Box, Flex } from "brainly-style-guide";
 import Attachments from "./_attachments";
+import Verified from "./_verifiedHead";
 import reportMenu from "@modals/Report/report";
 import local from "@config/localization";
 import site from "@lib/market";
+import clsx from "clsx";
+import ToLatex from "@lib/_toLatex";
 
 export default function Item({ id, data, users, type }) {
   const [commentVis, setVis] = useState(false);
   const [iconStr, setStr] = useState("comment_outlined");
   let user = userById(users, data.user_id);
   let userId = `${site.url}/app/profile/${user.id}`;
-  let content = data.content;
+  let content: string = data.content;
   let reported = data.settings.is_marked_abuse;
 
   return (
     <Box 
       border 
       className = {
-        `item id-${id} ${data.settings.is_marked_abuse ? "reported" : ""}` + "sg-flex sg-flex--column" 
+        clsx({
+          [`item id-${id} sg-flex sg-flex--column`]: true,
+          ["reported"]: data.settings.is_marked_abuse,
+          ["approved"]: data.approved?.approver
+        })
       }
       padding = "s"
       style = {{ marginBottom: "8px" }}
     >
+      {
+        !!(type !== "task" && data.approved.approver) && (
+          <Verified Approver={data.approved.approver} />
+        )
+      }
       <Media
         noPadding
         small
@@ -30,6 +42,7 @@ export default function Item({ id, data, users, type }) {
           <Avatar
             imgSrc={user.avatar?.[64] || null}
             link= {userId}
+            target="_blank"
           />}
         contentArray={[
           <Text 
@@ -49,7 +62,17 @@ export default function Item({ id, data, users, type }) {
           </Text>
         ]}
       />
-      <Text breakWords className = "content" dangerouslySetInnerHTML={{ __html: content }}/>
+      { 
+        type === "response" ? 
+          <Flex 
+            className="content scroll-container"
+            direction="column"
+            style={{ gap:"0.5rem" }}
+          >
+            {ToLatex(content)}
+          </Flex> : 
+          <Text className="content scroll-container" breakWords dangerouslySetInnerHTML={{ __html: content }} />
+      }
       <Attachments attachments = {data.attachments} />
       <Flex
         direction = "row"
@@ -133,7 +156,7 @@ function CommentItem({ data, users }) {
     >
       <Avatar
         imgSrc={user.avatar?.[64] || null}
-        link={`https://brainly.com/app/profile/${user.id}`}
+        link={`${site.url}/app/profile/${user.id}`}
         size="xs"
       />
       <Text size="small" breakWords>{data.content}</Text>

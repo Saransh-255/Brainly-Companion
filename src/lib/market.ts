@@ -35,6 +35,13 @@ const markets = [
     }
   },
   {
+    url: "https://brainly.pl",
+    locals: {
+      market: "pl",
+      question: "zadanie"
+    }
+  },
+  {
     url: "https://brainly.co.id",
     locals: {
       market: "id",

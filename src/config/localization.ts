@@ -25,6 +25,30 @@ const langs = {
       rate: "Answers/Day"
     }
   },
+  pl: {
+    points: "pkt",
+    answering: "Panel odpowiedzi",
+    modals: {
+      preview: {
+        title: "Podgląd treści",
+        answer: "Odpowiedź"
+      },
+      report: {
+        title: "Zgłoś treść",
+        commit: "Raport"
+      },
+      theme: {
+        title: "Zmień motyw",
+        commit: "Stosować"
+      }
+    },
+    dashboard: {
+      quota: "Kontyngent",
+      month: "Miesiąc",
+      quarter: "Kwartał",
+      rate: "Odpowiedzi/dzień"
+    }
+  },
   ru: {
     points: "б",
     answering: "Панель ответов",

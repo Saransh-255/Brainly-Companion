@@ -3,11 +3,19 @@
   z-index: 998;
   .item{
     gap:0.5rem;
+
+    &.approved{
+      border-color: #24a865;
+    }
     .sg-media{
       min-height: 2.75rem;
     }
     .content{
       overflow:auto;
+      img{
+        width:fit-content;
+        max-width:100%;
+      }
     }
     .attachments{
       .attachment-view{

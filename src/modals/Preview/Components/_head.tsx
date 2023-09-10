@@ -1,8 +1,9 @@
 import local from "@config/localization";
+import site from "@lib/market";
 import { Headline, Breadcrumb, Flex, Link } from "brainly-style-guide";
 
 export default function Head({ subject, grade, id, data }) {
-  let link = `https://brainly.com/question/${id}`; 
+  let link = `${site.url}/${site.locals.question}/${id}`; 
   
   return (
     <Flex 
