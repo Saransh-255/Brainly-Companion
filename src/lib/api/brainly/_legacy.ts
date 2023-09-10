@@ -100,4 +100,10 @@ export default new class BrainlyAPI {
     }).then(data => data.json());
     return res.success ? res : null;
   }
+
+  async ThankResponse(id: number): Promise<boolean> {
+    return await fetch(`${this.legacyURL}/api_responses/thank/${id}`)
+      .then(data => data.json())
+      .then(data => data.success);
+  }
 };

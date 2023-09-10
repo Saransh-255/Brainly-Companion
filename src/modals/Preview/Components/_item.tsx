@@ -7,10 +7,14 @@ import local from "@config/localization";
 import site from "@lib/market";
 import clsx from "clsx";
 import ToLatex from "@lib/_toLatex";
+import { Legacy } from "@lib/api/brainly";
 
 export default function Item({ id, data, users, type }) {
   const [commentVis, setVis] = useState(false);
   const [iconStr, setStr] = useState("comment_outlined");
+  const [thank, setThank] = useState(false);
+  const [tyCount, setCount] = useState(data.thanks);
+
   let user = userById(users, data.user_id);
   let userId = `${site.url}/app/profile/${user.id}`;
   let content: string = data.content;
@@ -69,67 +73,94 @@ export default function Item({ id, data, users, type }) {
             direction="column"
             style={{ gap:"0.5rem" }}
           >
-            {ToLatex(content)}
+            {
+              ToLatex(content).map(item => <Text breakWords>{item}</Text>)
+            }
           </Flex> : 
           <Text className="content scroll-container" breakWords dangerouslySetInnerHTML={{ __html: content }} />
       }
       <Attachments attachments = {data.attachments} />
       <Flex
         direction = "row"
-        justifyContent="flex-end"
+        justifyContent="space-between"
         className="preview-actions"
         style={{ gap:"4px" }}
       >
         {
-          data.comments.count ? (
+          !!(type === "response") && (
             <Button
-              className="show-comments"
-              icon={<Icon color="adaptive" size={24} type={iconStr} > </Icon>} 
-              variant="transparent-light"
+              className="thank-response"
+              icon={
+                <Icon color="icon-red-50" size={24} type={thank ? "heart" : "heart_outlined"} > </Icon>
+              } 
+              variant="transparent-red"
+              disabled={thank}
               style= {{ padding:"0px 16px" }}
               onClick={()=> {
-                setVis(!commentVis); 
-                setStr(iconStr == "comment_outlined" ? "comment" : "comment_outlined");
+                Legacy.ThankResponse(id)
+                  .then(res => {
+                    if (res) setCount(n => n + 1);
+                  });
+                setThank(true);
               }}       
-            >{data.comments.items.length}</Button>
-          ) : ""
+            >{local.modals.preview.thank} ({tyCount})</Button>
+          )
         }
-        {
-          !data.settings.is_deleted ? (
-            <Button
-              className = "report-button"
-              icon={
-                reported ?  
-                  <Icon color="icon-red-50" size={24} type="report_flag"/> :
-                  <Icon color="adaptive" size={24} type="report_flag_outlined"/>
-              }
-              iconOnly
-              size="m"
-              disabled={reported}
-              variant="transparent-light"
-              onClick = {(e) => {
-                reportMenu(id, type, e.target);
-              }}
-            /> 
-          ) : ""
-        }
-        {
-          (type === "task" && !data.settings.is_deleted) ? (
-            <Button
-              icon={<Icon color="adaptive" type="plus"/>}
-              target="_blank"
-              disabled={data.responses >= 2}
-              onClick={()=> {
-                document.querySelector("#modal.preview").remove();
-              }}
-              type={"button"}
-              variant="outline"
-              href = {`${site.url}/${site.locals.question}/${id}?answering=true`}
-            >
-              {local.modals.preview.answer}
-            </Button>
-          ) : ""
-        }
+        <Flex
+          style={{ gap: "4px" }}
+        >
+          {
+            data.comments.count ? (
+              <Button
+                className="show-comments"
+                icon={<Icon color="adaptive" size={24} type={iconStr} > </Icon>} 
+                variant="transparent-light"
+                style= {{ padding:"0px 16px" }}
+                onClick={()=> {
+                  setVis(!commentVis); 
+                  setStr(iconStr == "comment_outlined" ? "comment" : "comment_outlined");
+                }}       
+              >{data.comments.items.length}</Button>
+            ) : ""
+          }
+          {
+            !data.settings.is_deleted ? (
+              <Button
+                className = "report-button"
+                icon={
+                  reported ?  
+                    <Icon color="icon-red-50" size={24} type="report_flag" aria-label="report-icon"/> :
+                    <Icon color="adaptive" size={24} type="report_flag_outlined" aria-label="report-icon" />
+                }
+                iconOnly
+                aria-label="report-button"
+                size="m"
+                disabled={reported}
+                variant="transparent-light"
+                onClick = {(e) => {
+                  reportMenu(id, type, e.target);
+                }}
+              /> 
+            ) : ""
+          }
+          {
+            (type === "task" && data.settings.is_answer_button) ? (
+              <Button
+                icon={<Icon color="adaptive" type="plus"/>}
+                target="_blank"
+                disabled={data.responses >= 2}
+                onClick={()=> {
+                  document.querySelector("#modal.preview").remove();
+                }}
+                type={"button"}
+                variant="outline"
+                href = {`${site.url}/${site.locals.question}/${id}?answering=true`}
+              >
+                {local.modals.preview.answer}
+              </Button>
+            ) : ""
+          }
+        </Flex>
       </Flex>
       {
         commentVis ? (
@@ -164,8 +195,11 @@ function CommentItem({ data, users }) {
         !data.is_marked_abuse && data.can_mark_abuse ? (
           <Button
             className = "rep-button"
-            icon={<Icon color="adaptive" size={16} type="report_flag_outlined"/>}
+            icon={
+              <Icon aria-label="report-flag" color="adaptive" size={16} type="report_flag_outlined"/>
+            }
             iconOnly
+            aria-label="report-button"
             size="s"
             variant="transparent-light"
             onClick = {(e) => {

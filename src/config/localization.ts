@@ -7,7 +7,8 @@ const langs = {
     modals: {
       preview: {
         title: "Preview Content",
-        answer: "Answer"
+        answer: "Answer",
+        thank: "THANKS"
       },
       report: {
         title: "Report Content",
@@ -31,7 +32,8 @@ const langs = {
     modals: {
       preview: {
         title: "Podgląd treści",
-        answer: "Odpowiedź"
+        answer: "Odpowiedź",
+        thank: "DZIĘKOWAĆ"
       },
       report: {
         title: "Zgłoś treść",
@@ -55,7 +57,8 @@ const langs = {
     modals: {
       preview: {
         title: "Предварительный просмотр вопроса",
-        answer: "Отвечать"
+        answer: "Отвечать",
+        thank: "БЛАГОДАРИТЬ"
       },
       report: {
         title: "Содержание отчета",
@@ -79,7 +82,8 @@ const langs = {
     modals: {
       preview: {
         title: "Aperçu du contenu",
-        answer: "Répondre"
+        answer: "Répondre",
+        thank: "REMERCIER"
       },
       report: {
         title: "Contenu du rapport",
@@ -103,7 +107,8 @@ const langs = {
     modals: {
       preview: {
         title: "Previzualizare conținut",
-        answer: "Răspuns"
+        answer: "Răspuns",
+        thank: "MULȚUMESC"
       },
       report: {
         title: "Raportați conținut",
