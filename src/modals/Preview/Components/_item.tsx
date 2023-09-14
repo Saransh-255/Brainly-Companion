@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Avatar, Text, Media, Button, Icon, Box, Flex } from "brainly-style-guide";
+import { Avatar, Text, Media, Button, Icon, Box, Flex, Sparks } from "brainly-style-guide";
 import Attachments from "./_attachments";
 import Verified from "./_verifiedHead";
 import reportMenu from "@modals/Report/report";
@@ -82,28 +82,35 @@ export default function Item({ id, data, users, type }) {
       <Attachments attachments = {data.attachments} />
       <Flex
         direction = "row"
-        justifyContent="space-between"
+        justifyContent={type === "task" ? "flex-end" : "space-between"}
         className="preview-actions"
         style={{ gap:"4px" }}
       >
         {
           !!(type === "response") && (
-            <Button
-              className="thank-response"
-              icon={
-                <Icon color="icon-red-50" size={24} type={thank ? "heart" : "heart_outlined"} > </Icon>
-              } 
-              variant="transparent-red"
-              disabled={thank}
-              style= {{ padding:"0px 16px" }}
-              onClick={()=> {
-                Legacy.ThankResponse(id)
-                  .then(res => {
-                    if (res) setCount(n => n + 1);
-                  });
-                setThank(true);
-              }}       
-            >{local.modals.preview.thank} ({tyCount})</Button>
+            <Sparks
+              active={thank}
+              iterationCount={1}
+              shape="heart"
+            >
+              <Button
+                className="thank-response"
+                icon={
+                  <Icon color="icon-red-60" size={24} type={thank ? "heart" : "heart_outlined"} > </Icon>
+                } 
+                variant="transparent-red"
+                disabled={thank}
+                style= {{ padding:"0px 16px" }}
+                onClick={()=> {
+                  Legacy.ThankResponse(id)
+                    .then(res => {
+                      if (res) setCount(n => n + 1);
+                    });
+                  setThank(true);
+                }}       
+              >{local.modals.preview.thank} ({tyCount})
+              </Button>
+            </Sparks>
           )
         }
         <Flex

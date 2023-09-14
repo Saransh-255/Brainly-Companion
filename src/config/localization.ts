@@ -4,6 +4,7 @@ const langs = {
   en: {
     points: "pts",
     answering: "Answering Dashboard",
+    rate: "Rate Us",
     modals: {
       preview: {
         title: "Preview Content",
@@ -29,6 +30,7 @@ const langs = {
   pl: {
     points: "pkt",
     answering: "Panel odpowiedzi",
+    rate: "Oceń nas",
     modals: {
       preview: {
         title: "Podgląd treści",
@@ -54,6 +56,7 @@ const langs = {
   ru: {
     points: "б",
     answering: "Панель ответов",
+    rate: "Оцените нас",
     modals: {
       preview: {
         title: "Предварительный просмотр вопроса",
@@ -79,6 +82,7 @@ const langs = {
   fr: {
     points: "pts",
     answering: "Tableau de bord de réponse",
+    rate: "Évaluez nous",
     modals: {
       preview: {
         title: "Aperçu du contenu",
@@ -104,6 +108,7 @@ const langs = {
   ro: {
     points: "pcte",
     answering: "Tabloul de bord cu răspunsuri",
+    rate: "Ne evalua",
     modals: {
       preview: {
         title: "Previzualizare conținut",

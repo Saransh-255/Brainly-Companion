@@ -10,7 +10,7 @@
     "@types/react": "18.0.31",
     "@types/react-dom": "18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.57.0",
-    "brainly-style-guide": "^223.1.0",
+    "brainly-style-guide": "^225.7.0",
     "chart.js": "^3.9.1",
     "chartjs-react": "^3.6.0",
     "clsx": "^1.2.1",

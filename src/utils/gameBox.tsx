@@ -1,9 +1,9 @@
 import { box, icon } from "@components";
 import observeMutation from "@lib/observeMutation";
 import runForElem from "@lib/runForElem";
-import PickColor from "@modals/Color/Color";
 import site from "@lib/market";
 import locals from "@config/localization";
+import PickColor from "@modals/Color/Color";
 
 export default function gameBox() {
   console.log(site);
@@ -18,10 +18,27 @@ export default function gameBox() {
       gBoxElem(locals.answering, "#133191", "star", `${site.url}/companion/answering`)
     );
     gbox.appendChild(
-      gBoxElem(locals.modals.theme.title, "#000000", "globe", "", () => {
-        PickColor();
+      gBoxElem(locals.modals.theme.title, "#000000", "globe", "", PickColor)
+    );
+    gbox.appendChild(
+      box({
+        padding: "s",
+        border: true,
+        borderColor: "gray-20",
+        borderRadius: true,
+        classes: ["sg-flex cws-rate tooltip"],
+        children: (
+          `<img src="https://fonts.gstatic.com/s/i/productlogos/chrome_store/v7/192px.svg">`
+        ),
+        attributes: [{
+          key: "data-tooltip",
+          value: locals.rate
+        }],
+        // eslint-disable-next-line max-len
+        href: "https://chrome.google.com/webstore/detail/brainly-companion/cplddgdncahafjjpimjjbghigkeabiod?snuoi"
       })
     );
+    
   }
 
   const selector = "[data-testid='aside_content']";
