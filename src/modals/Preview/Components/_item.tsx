@@ -90,7 +90,7 @@ export default function Item({ id, data, users, type }) {
           !!(type === "response") && (
             <Sparks
               active={thank}
-              iterationCount={1}
+              iterationCount={Infinity}
               shape="heart"
             >
               <Button

@@ -9,5 +9,5 @@ window.addEventListener("storage", () => {
 
 export default function applyColor(color) {
   (document.querySelector(":root") as HTMLElement)
-    .style.setProperty("--header", color ?? "#bdc7fb");
+    .style.setProperty("--header", color ?? "#bdc0ce");
 }

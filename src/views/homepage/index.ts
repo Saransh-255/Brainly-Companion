@@ -110,6 +110,21 @@ runForElem("meta[name='user_data']", () => {
       subtree: true
     }
   });
+});
 
-  gameBox();
+
+//game box detection
+observeMutation({
+  target: ".sg-layout__container",
+  hookInterval: 0,
+  itemFn: () => {
+    if (!document.querySelector(".sg-layout__container .sg-layout__aside-content")) return;
+    gameBox();
+  },
+  settings: {
+    attributes: true,
+    childList: true,
+    characterData: true,
+    subtree: true
+  }
 });

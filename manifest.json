@@ -2,7 +2,7 @@
   "name": "Brainly Companion",
   "description": "Additional Features to Improve Your Brainly Experience. \n Compatible with: (in, fr, us, ro, ru, id, pl)",
   "manifest_version": 3,
-  "version": "1.23",
+  "version": "1.23.5",
   "host_permissions": [
     "*://brainly.com/*",
     "*://brainly.ro/*",
