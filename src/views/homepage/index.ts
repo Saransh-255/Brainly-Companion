@@ -9,6 +9,8 @@ import reportMenu from "@modals/Report/report";
 import Preview from "@modals/Preview/Preview";
 import gameBox from "@utils/gameBox";
 import site from "@lib/market";
+import locals from "@config/localization";
+import ginnySB, { toggleGinnySB } from "@utils/ginnySB";
 
 runForElem("meta[name='user_data']", () => {
   // Preview buttons
@@ -24,7 +26,6 @@ runForElem("meta[name='user_data']", () => {
 
         let anchor: HTMLAnchorElement = item.querySelector("a[data-test=feed-item-link]");
         let questionId = +getId(anchor.href, "question");
-        console.log(questionId);
 
         item.querySelector(".brn-feed-item__points > div > div")
           .insertAdjacentElement("afterbegin", buttonElem({
@@ -128,3 +129,27 @@ observeMutation({
     subtree: true
   }
 });
+
+
+//ginny sidebar header
+if (site.locals.market === "us") {
+  runForElem(".sg-layout__container div[data-testid='feed_ask_your_question_box']", (elem) => {
+    ginnySB();
+  
+    elem.querySelector("h1").innerText = locals.ginny.headline;
+    elem.querySelector("button").remove();
+  
+    elem.insertAdjacentElement("beforeend", buttonElem({
+      text: locals.ginny.button,
+      size: "m",
+      type: "solid-indigo",
+      icon: {
+        type: "spark",
+        size: 24,
+        color: "icon-white"
+      },
+      clickEvent: () => toggleGinnySB(),
+      iconOnly: false
+    }));
+  });
+}

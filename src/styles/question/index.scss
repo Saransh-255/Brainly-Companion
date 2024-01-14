@@ -2,7 +2,17 @@
 @use "./answerBox";
 @use "../common/gameBox";
 @use "../common/basic";
+@use "../common/ginny";
 
 .js-dialog{
   z-index: 998!important;
+}
+
+.ginny-sb{
+  z-index: 999!important;
+  background: white;
+}
+
+#question-sg-layout-container{
+  margin-top: 3rem!important;
 }

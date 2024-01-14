@@ -6,8 +6,6 @@ import locals from "@config/localization";
 import PickColor from "@modals/Color/Color";
 
 export default function gameBox() {
-  console.log(site);
-
   function addGbButs(elem: HTMLElement) {
     if (document.querySelector(".comp-gb")) return;
 

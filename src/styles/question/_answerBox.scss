@@ -1,28 +1,39 @@
-div[data-testid = 'add_answer_box']{
-  span[data-slate-node = 'text'].highlight{
+div[data-testid="add_answer_box"] {
+  span[data-slate-node="text"].highlight {
     padding: 4px 8px;
     background: #ff7968;
     border-radius: 7px;
   }
 }
-.answer-word-count{
+.answer-word-count {
   pointer-events: none;
-  background:transparent;
-  height: 30px!important;
-  width: 30px!important;
+  background: transparent;
+  height: 30px !important;
+  width: 30px !important;
   position: absolute;
   right: 16px;
   bottom: 16px;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  #acount{
-    height: 30px!important;
-    width: 30px!important;
+  #acount {
+    height: 30px !important;
+    width: 30px !important;
   }
-  .remaining-count{
+  .remaining-count {
     position: absolute;
     font-size: 14px;
     font-weight: 600;
+  }
+}
+.ginny-sb-active {
+  div[data-testid="rich_text_editor_toolbar"].toolbar-ginny {
+    margin-bottom: 3rem;
+    .ginny-sb-answer {
+      transform: translateX(-50%) !important;
+      position: absolute;
+      left: 50%;
+      bottom: -2.5rem;
+    }
   }
 }

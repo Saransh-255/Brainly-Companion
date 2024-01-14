@@ -25,6 +25,10 @@ const langs = {
       month: "Month",
       quarter: "Quarter",
       rate: "Answers/Day"
+    },
+    ginny: {
+      headline: "Need Help ASAP?",
+      button: "Talk to Ginny"
     }
   },
   pl: {
@@ -51,6 +55,10 @@ const langs = {
       month: "Miesiąc",
       quarter: "Kwartał",
       rate: "Odpowiedzi/dzień"
+    },
+    ginny: {
+      headline: "Potrzebujesz pomocy jak najszybciej?",
+      button: "Porozmawiaj z Ginny"
     }
   },
   ru: {
@@ -77,6 +85,10 @@ const langs = {
       month: "Месяц",
       quarter: "Четверть",
       rate: "Ответы/День"
+    },
+    ginny: {
+      headline: "Нужна помощь как можно скорее?",
+      button: "Поговорите с Джинни"
     }
   },
   fr: {
@@ -103,6 +115,10 @@ const langs = {
       month: "Mois",
       quarter: "Quart",
       rate: "Réponses/jour"
+    },
+    ginny: {
+      headline: "Besoin d'aide dès que possible ?",
+      button: "Parlez à Ginny"
     }
   },
   ro: {
@@ -129,6 +145,10 @@ const langs = {
       month: "Lună",
       quarter: "Sfert",
       rate: "Răspunsuri/zi"
+    },
+    ginny: {
+      headline: "Aveți nevoie de ajutor rapid",
+      button: "Vorbește cu Ginny"
     }
   }
 };

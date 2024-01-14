@@ -6,6 +6,11 @@ import Profanity from "@config/profanity";
 import Chart from "chart.js/auto";
 import gameBox from "@utils/gameBox";
 
+import locals from "@config/localization";
+
+import ginnySB, { toggleGinnySB } from "@utils/ginnySB";
+import site from "@lib/market";
+
 gameBox();
 
 //answering box observer
@@ -23,30 +28,53 @@ observeMutation({
     if (!answerBox || answerBox.dataset.modified) return;
     answerBox.dataset.modified = "true";
 
-    answerBox.querySelector("div[data-testid = 'rich_text_editor_toolbar']")
-      .appendChild(buttonElem({
-        icon: {
-          type: "draw",
-          size: 24,
-          color: "icon-black"
-        },
-        type: "transparent",
-        size: "m",
-        iconOnly: true,
-        clickEvent: () => {
-          createModal({
-            element: <>
-              <TextBit size="small">graphing calculator</TextBit>
-              <iframe 
-                id="calculator" 
-                src="https://www.geogebra.org/classic" 
-              />
-            </>,
-            className: "graph",
-            minWidth: "90vw"
-          });
-        }
-      }));
+    const toolbar = answerBox.querySelector("div[data-testid = 'rich_text_editor_toolbar']");
+
+    if (site.locals.market === "us") {
+      ginnySB();
+      toolbar.classList.add("toolbar-ginny");
+      toolbar.appendChild(
+        buttonElem({
+          text: locals.ginny.button,
+          size: "s",
+          icon: {
+            type: "spark",
+            size: 16,
+            color: "icon-black"
+          },
+          type: "transparent",
+          iconOnly: false,
+          clickEvent() {
+            toggleGinnySB();
+          },
+          classes: ["ginny-sb-answer"]
+        })
+      );
+    }
+
+    toolbar.appendChild(buttonElem({
+      icon: {
+        type: "draw",
+        size: 24,
+        color: "icon-black"
+      },
+      type: "transparent",
+      size: "m",
+      iconOnly: true,
+      clickEvent: () => {
+        createModal({
+          element: <>
+            <TextBit size="small">graphing calculator</TextBit>
+            <iframe 
+              id="calculator" 
+              src="https://www.geogebra.org/classic" 
+            />
+          </>,
+          className: "graph",
+          minWidth: "90vw"
+        });
+      }
+    }));
 
     document.querySelector("div[data-testid='add_answer_box'] > div > div")
       .insertAdjacentHTML("beforeend", `

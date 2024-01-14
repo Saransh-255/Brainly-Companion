@@ -1,0 +1,64 @@
+html {
+  &.ginny-sb-active {
+    display: flex;
+    overflow-x: hidden;
+    .ginny-sb {
+      border-right: 0px solid #e1eaf1;
+      display:flex;
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      flex: none;
+      overflow: hidden;
+      transition: width 180ms cubic-bezier(0.1, 0, 0, 1);
+
+      width: 0px;
+      .close-ginny{
+        opacity: 0;
+      }
+      &.open{
+        width: 400px;
+        border-width: 2px;
+
+        .close-ginny{
+          position: absolute;
+          right: 0.5rem;
+          top: 0.5rem;
+          background:white;
+          opacity: 1;
+          transition: opacity 180ms;
+        }
+
+        > iframe[testid="ginny-sb"] {
+          border: none !important;
+          height: 100%;
+          width: 400px;
+        }
+      }
+    }
+    body {
+      flex-shrink: 0;
+      width:-webkit-fill-available;
+      position: relative;
+      .ginny-sb-button{
+        position: absolute;
+        left: 1.5rem;
+        bottom:1.5rem;
+      }
+      .sg-layout__container{
+        margin-top: 1.5rem;
+      }
+    }
+    .brn-header-container {
+      position: relative !important;
+      padding-top: 0px !important;
+
+      .brn-header {
+        position: relative;
+        div[data-testid="header_overlay"] {
+          position: absolute !important;
+        }
+      }
+    }
+  }
+}
