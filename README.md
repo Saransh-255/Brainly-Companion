@@ -15,9 +15,9 @@ Tools to supercharge your Brainly experience.
 This extension is exclusively available on chromium-based browsers. 
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg" width="64" height="64">  <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Microsoft_Edge_logo_%282019%29.png?20220301074026" width="64" height="64">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Brave_lion_icon.svg/640px-Brave_lion_icon.svg.png" width="64" height="64"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Opera_2015_icon.svg/640px-Opera_2015_icon.svg.png" width="64" height="64">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Brave_lion_icon.svg/640px-Brave_lion_icon.svg.png" width="64" height="64"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Opera_2015_icon.svg/640px-Opera_2015_icon.svg.png" width="64" height="64"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Arc_%28browser%29_logo.svg/1200px-Arc_%28browser%29_logo.svg.png" width="64" height="64">
 
-Just go to the [Chrome Web Store](https://chrome.google.com/webstore/detail/brainly-companion/cplddgdncahafjjpimjjbghigkeabiod) page and click install!
+Just go to the [Chrome Web Store](https://chromewebstore.google.com/detail/brainly-companion/cplddgdncahafjjpimjjbghigkeabiod?hl=en-US) page and click install!
 
 ## Features
 
