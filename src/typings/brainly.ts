@@ -75,6 +75,9 @@ interface Attachment {
 }
 export interface ReferenceData {
   data: {
+    config: {
+      timezone: string
+    }
     grades:{
       id: number;
       icon: string;
@@ -113,42 +116,44 @@ export interface ContentList {
   data: {
     task?: Task[];
     responses?: {
-      items: {
-        content: string,
-        created: string,
-        id: number,
-        is_the_best: boolean,
-        points: number,
-        points_for_best: number,
-        task_id: number,
-        thanks: number,
-        user_id: number,
-        vote: number,
-        wrong: number
-      }[],
+      items: ContentListAns[],
       last_id: number
     }
   };
   users_data: User[]
 }
+export interface ContentListAns {
+  content: string,
+  created: string,
+  id: number,
+  is_the_best: boolean,
+  points: number,
+  points_for_best: number,
+  task_id: number,
+  thanks: number,
+  user_id: number,
+  vote: number,
+  wrong: number
+}
 export interface Notifications {
   data:{
-    items:{
-      button?: string,
-      content: string,
-      created: string,
-      event: number,
-      id: number,
-      model_id: number,
-      model_type_id: number,
-      notification_type: number,
-      response_id?: number,
-      text: string,
-      type: string,
-      user_id: number
-    }[]
+    items: Notification[]
   },
   users_data: User[]
+}
+export interface Notification {
+  button?: string,
+  content: string,
+  created: string,
+  event: number,
+  id: number,
+  model_id: number,
+  model_type_id: number,
+  notification_type: number,
+  response_id?: number,
+  text: string,
+  type: string,
+  user_id: number
 }
 export interface UserInfo {
   data:{

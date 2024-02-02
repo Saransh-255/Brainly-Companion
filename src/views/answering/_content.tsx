@@ -13,6 +13,7 @@ import { ContentList, Notifications } from "@typings/brainly";
 import Progress from "./_progress";
 import AnsGraph from "./_ansGraph";
 import NotificationItem from "./_notifications";
+import TimeFns from "@lib/timeFns";
 
 const links = [
   {
@@ -45,8 +46,7 @@ const links = [
   }
 ];
 
-export default function Content() {
-  const refresh = useState(false);
+export default function Content({ time } : { time: TimeFns }) {
 
   //const [user, setUser] = React.useState<UserInfo>();
   const [answers, setAnswers] = useState<ContentList>();
@@ -58,7 +58,7 @@ export default function Content() {
       await Legacy.GetContent("responses").then(ans => setAnswers(ans));
     };
     getData();
-  }, [refresh]);
+  }, []);
 
   if (notifications && answers) {
     return (
@@ -70,7 +70,7 @@ export default function Content() {
           <Flex
             className = "f1 toprow"
           >
-            <Progress allAnswers = {answers} />
+            <Progress allAnswers = {answers} time={time} />
           </Flex>
           <Flex
             className = "bottomrow f1"
@@ -86,14 +86,14 @@ export default function Content() {
                 <LinkList arr={links} />
               </Box>
             </Flex>
-            <NotificationItem notif = {notifications} />
+            <NotificationItem notif = {notifications} time={time} />
             <Flex
               style = {{ flex : "2" }}
               alignItems= "center"
               justifyContent= "center"
               className="illustration"
             >
-              <AnsGraph usersArr = {answers.data.responses.items} />
+              <AnsGraph ansArr = {answers.data.responses.items} time={time} />
             </Flex>
           </Flex>
         </Flex>
@@ -112,10 +112,10 @@ function LinkList({ arr }) {
           return (
             <ListItem key = {item.link}>
               <Link
-                hideNewTabIndicator
                 href={item.link}
                 newTabLabel=""
                 target="_blank"
+                emphasised={false}
               >
                 {item.name}
               </Link>

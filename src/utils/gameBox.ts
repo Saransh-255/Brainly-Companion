@@ -33,7 +33,7 @@ export default function gameBox() {
           value: locals.rate
         }],
         // eslint-disable-next-line max-len
-        href: "https://chrome.google.com/webstore/detail/brainly-companion/cplddgdncahafjjpimjjbghigkeabiod?snuoi"
+        href: "https://chromewebstore.google.com/detail/brainly-companion/cplddgdncahafjjpimjjbghigkeabiod"
       })
     );
     

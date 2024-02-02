@@ -1,7 +1,7 @@
-.progress .sg-box{
-  display:flex;
-  flex-direction:column;
-  .dataItem{
+.progress .sg-box {
+  display: flex;
+  flex-direction: column;
+  .dataItem {
     background: black;
     padding: 8px 12px;
     border-radius: 10px;
@@ -10,12 +10,40 @@
     align-items: center;
     justify-content: flex-end;
   }
-  &.answer-rate{
-    height:100%;
-    background: rgb(203,13,165);
-    background: linear-gradient(167deg, rgba(203,13,165,0.7917542016806722) 0%, rgba(12,11,252,0.6685049019607843) 100%);
-    >div{
-      height:100%;
+  &.answer-rate {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    > div {
+      height: 100%;
+    }
+    .rate-info {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      width: 100%;
+    }
+    .backdrop {
+      z-index: 1;
+      background: #f5f8fa;
+      filter: blur(1.5rem);
+      .circles {
+        width: 100%;
+        height:100%;
+        >div{
+          border-radius:100%;
+          position: absolute;
+        }
+        .circ5 {
+          height: 7rem;
+          width: 7rem;
+        }
+        .circ6 {
+          height: 9rem;
+          width: 9rem;
+        }
+      }
     }
   }
 }

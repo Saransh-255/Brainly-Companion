@@ -9,24 +9,25 @@ import {
   Button, 
   Icon 
 } from "brainly-style-guide";
-import { filterByTime, getNow } from "@lib/timeFns";
 import { startOfDay, startOfISOWeek, startOfMonth, sub } from "date-fns";
 import { formatInTimeZone } from "date-fns-tz";
 import { formatDistance } from "date-fns";
 import showPreview from "@modals/Preview/Preview";
 
 import { distinctIds } from "@lib/arrOps";
+import { Notifications } from "@typings/brainly";
+import TimeFns from "@lib/timeFns";
 
-let now = getNow();
+export default function NotificationItem({ notif, time }: { notif: Notifications, time: TimeFns }) {
+  let cmtNotifs = notif.data.items.filter(item => item.text.includes("commented"));
 
-export default function NotificationItem({ notif }) {
-  notif = notif.data.items.filter(item => item.text.includes("commented"));
+  const now = time.getNow();
 
-  let thisDay = filterByTime(notif, startOfDay(now), now);
-  let thisWeek = filterByTime(notif, startOfISOWeek(now), startOfDay(now));
-  let thisMonth = filterByTime(notif, startOfMonth(now), startOfISOWeek(now));
-  let lastMonth = filterByTime(notif, sub(startOfMonth(now), { months: 1 }), startOfMonth(now));
-  let allVis = filterByTime(notif, sub(startOfMonth(now), { months: 1 }), now);
+  let thisDay = time.filterByTime(cmtNotifs, startOfDay(now), now);
+  let thisWeek = time.filterByTime(cmtNotifs, startOfISOWeek(now), startOfDay(now));
+  let thisMonth = time.filterByTime(cmtNotifs, startOfMonth(now), startOfISOWeek(now));
+  let lastMonth = time.filterByTime(cmtNotifs, sub(startOfMonth(now), { months: 1 }), startOfMonth(now));
+  let allVis = time.filterByTime(cmtNotifs, sub(startOfMonth(now), { months: 1 }), now);
 
   if (allVis.length) return (
     <Flex
@@ -40,43 +41,44 @@ export default function NotificationItem({ notif }) {
       >
         <Accordion>
           {
-            thisDay.length ? <AccordionItem
-              id="daily"
-              title={`Today (${thisDay.length})`}
-            >
-              <NotifItem arr = {thisDay}/>
-            </AccordionItem> : ""
-          }
-          {
-            thisWeek.length ? <AccordionItem
-              id="weekly"
-              title={`This Week (${thisWeek.length})`}
-            >
-              <NotifItem arr = {thisWeek}/>
-            </AccordionItem> : ""
-          }
-          {
-            thisMonth.length ? <AccordionItem
-              id="monthly"
-              title={`This Month (${thisMonth.length})`}
-            >
-              <NotifItem arr = {thisMonth}/>
-            </AccordionItem> : ""
-          }
-          {
-            lastMonth.length ? <AccordionItem
-              id="last-month"
-              title={`Last Month (${lastMonth.length})`}
-            >
-              <NotifItem arr = {lastMonth}/>
-            </AccordionItem> : ""
+            [
+              {
+                array: thisDay,
+                id: "daily",
+                title: `Today (${thisDay.length})`
+              },
+              {
+                array: thisWeek,
+                id: "weekly",
+                title: `This Week (${thisWeek.length})`
+              },
+              {
+                array: thisMonth,
+                id: "monthly",
+                title: `This Month (${thisMonth.length})`
+              },
+              {
+                array: lastMonth,
+                id: "last-month",
+                title: `Last Month (${lastMonth.length})`
+              }
+            ].map(item => {
+              if (item.array.length) return (
+                <AccordionItem
+                  id={item.id}
+                  title={item.title}
+                >
+                  <NotifItem arr = {item.array} now={now} tz={time.tz} />
+                </AccordionItem>
+              );
+            })
           }
         </Accordion>
       </Box>
     </Flex>
   );
 }
-function NotifItem({ arr }) {
+function NotifItem({ arr, now, tz } : { arr: Notification[], now: Date, tz: string }) {
   return (<Flex style = {{ gap: "0.5rem" }} direction="column">
     {
       distinctIds(arr).map(item => {
@@ -100,7 +102,7 @@ function NotifItem({ arr }) {
                         formatDistance(
                           new Date(
                             formatInTimeZone(
-                              new Date(item.at(-1).created), "America/New_York", "yyyy-MM-dd HH:mm:ss"
+                              new Date(item.at(-1).created), tz, "yyyy-MM-dd HH:mm:ss"
                             )
                           ), 
                           now,
